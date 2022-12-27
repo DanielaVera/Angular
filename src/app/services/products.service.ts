@@ -12,7 +12,13 @@ export class ProductsService {
     private http: HttpClient
   ) { }
 
+  private urlApi = 'https://young-sands-07814.herokuapp.com/api/products'
+
   getAllProducts() {
-    return this.http.get<Product[]>('https://young-sands-07814.herokuapp.com/api/products');
+    return this.http.get<Product[]>(this.urlApi);
+  }
+
+  getProduct(id: string) {
+    return this.http.get<Product>(this.urlApi);
   }
 }

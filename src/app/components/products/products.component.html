@@ -1,14 +1,19 @@
-<button (click)="toggleProductDetail()">Clic</button>
+<div>
+  <button (click)="toggleProductDetail()">ABRIR</button>
+</div>
+
 <div class="products--grid">
   <app-product
     [product]="product"
     *ngFor="let product of products"
     (addedProduct)="onAddToShoppingCart($event)"
+    (showProduct)="onShowDetail($event)"
   ></app-product>
 </div>
-<div class="device-detail" [class.active] ="showProductDetail" >
-  <div>
-    <button (click)="toggleProductDetail()">Close</button>
-  
+<div class="product-detail" [class.active]="showProductDetail">
+  <div *ngIf="productChosen">
+    <button (click)="toggleProductDetail()">CERRAR</button>
+    <h1>{{productChosen.title}}</h1>
+    <p>{{productChosen.description}}</p>
   </div>
 </div>
